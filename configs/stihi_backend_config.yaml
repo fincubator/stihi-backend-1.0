@@ -2,7 +2,7 @@ cors_origin: "*"
 golos:
   creator: cyberfounder
   creator_active_key: "<активный ключ пользователя, от имени которого будут создаваться пользователи>"
-  creator_posting_key: " <постинг ключ>"
+  creator_posting_key: "<постинг ключ>"
   create_account_fee:
     amount: 10.000
     symbol: GOLOS
@@ -15,8 +15,8 @@ listen:
   host: 0.0.0.0
   port: 9001
 jwt:
-  private_key_path: /configs/priv_key_test.pem
-  public_key_path: /configs/pub_key_test.pem
+  private_key_path: /configs/priv_key.pem
+  public_key_path: /configs/pub_key.pem
   issuer: test.stihi.io
   expire: 60
   renew_time: 5
