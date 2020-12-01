@@ -38,11 +38,10 @@ services:
       - /var/tmp
     command:
       - stihi-backend
-      - -db_config=/configs/db_sample.yaml 
+      - -db_config=/configs/db_config.yaml 
       - -mongo_db_config=/configs/mongo_db_config.yaml 
-      - -redis_config=/configs/redis_sample.yaml 
+      - -redis_config=/configs/redis_config.yaml 
       - -config=/configs/stihi_backend_config.yaml
-    #command: sh -c "sleep 3600"
 
 volumes:
  stihi-postgres:
