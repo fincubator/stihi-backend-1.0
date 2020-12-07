@@ -28,22 +28,54 @@ services:
   stihi-backend:
     network_mode: host
     restart: always
-    build:
-      context: .
+    image: debian:10
     ports:
       - 9001:9001
+      - 9095:9095
     volumes:
-      - ./configs:/configs
+      - ./configs/stage:/configs
+      - go-local-user:/usr/local/bin/
     tmpfs:
       - /var/tmp
+    env_file:
+      - ./docker/scripts/.connections.env
+    depends_on:
+      - stihi-init
     command:
       - stihi-backend
-      - -db_config=/configs/db_config.yaml 
-      - -mongo_db_config=/configs/mongo_db_config.yaml 
-      - -redis_config=/configs/redis_config.yaml 
+      - -db_config=/configs/db_config.yaml
+      - -mongo_db_config=/configs/mongo_db_config.yaml
+      - -redis_config=/configs/redis_config.yaml
       - -config=/configs/stihi_backend_config.yaml
 
+  stihi-commands:
+    network_mode: host
+    image: debian:10
+    volumes:
+      - ./configs/stage:/configs
+      - ./docker/scripts:/scripts
+      - go-local-user:/usr/local/bin/
+    env_file:
+      - ./docker/scripts/.connections.env
+    depends_on:
+      - stihi-init
+    entrypoint: bash /scripts/export.sh
+
+  stihi-init:
+    container_name: stihi-init
+    build:
+      dockerfile: docker/init/Dockerfile
+      context: .
+    volumes:
+      - ./configs/stage:/configs
+      - go-local-user:/usr/local/bin/
+    env_file:
+      - ./docker/scripts/.connections.env
+    depends_on:
+      - postgres
+      - redis
 volumes:
+ go-local-user:
  stihi-postgres:
    external: true
  stihi-redis:
