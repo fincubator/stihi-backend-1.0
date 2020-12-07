@@ -5,7 +5,7 @@ WORKDIR /opt/app
 
 RUN CGO_ENABLED=1 go build -race utils/blockchain_loader_cyberway/blockchain_loader_cyberway.go \
     && CGO_ENABLED=1 go build -race utils/scan_blockchain_cyberway/scan_blockchain_cyberway.go
-RUN go build && ls -la
+RUN go build
 
 FROM debian:10
 
