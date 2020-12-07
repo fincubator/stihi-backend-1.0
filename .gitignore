@@ -7,3 +7,6 @@
 /scan_blockchain_cyberway
 /stihi_backend_cyberway
 /stihi_events_processor
+.env
+.idea
+configs/stage/

@@ -18,6 +18,7 @@ require (
 	github.com/golang/protobuf v1.0.1-0.20180202184318-bbd03ef6da3a // indirect
 	github.com/golang/snappy v0.0.1 // indirect
 	github.com/google/go-cmp v0.3.1 // indirect
+	github.com/joho/godotenv v1.3.0
 	github.com/lib/pq v0.0.0-20180201184707-88edab080323
 	github.com/onsi/ginkgo v1.4.1-0.20180216170043-9008c7b79f96 // indirect
 	github.com/onsi/gomega v1.3.1-0.20180305203722-de89e61d40b7 // indirect

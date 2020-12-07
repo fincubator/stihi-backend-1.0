@@ -1,4 +1,6 @@
 vendors:
+- path: github.com/joho/godotenv/cmd/godotenv
+  rev: f562099a4320c6cf2a806734921872cbe57ad585
 - path: github.com/SermoDigital/jose
   rev: 803625baeddc3526d01d321b5066029f53eafc81
 - path: github.com/VividCortex/godaemon

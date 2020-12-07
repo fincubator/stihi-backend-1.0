@@ -81,10 +81,12 @@ func main() {
 	}
 
 	var pidFile string
-	flag.StringVar(&appConfigFileName, 		"config", 			"", "Application config file name")
-	flag.StringVar(&dbConfigFileName, 		"db_config", 			"", "Db config file name")
-	flag.StringVar(&mongoConfigFileName, 	"mongo_db_config", 	"", "MongoDb config file name")
-	flag.StringVar(&redisConfigFileName, 	"redis_config", 		"", "Redis config file name")
+	configKeys := config.GetConfigs()
+
+	flag.StringVar(&appConfigFileName, "config", configKeys["configFilePath"], "Application config file name")
+	flag.StringVar(&dbConfigFileName, "db_config", configKeys["configDbPath"], "Db config file name")
+	flag.StringVar(&mongoConfigFileName, "mongo_db_config", configKeys["configMongoPath"], "MongoDb config file name")
+	flag.StringVar(&redisConfigFileName, "redis_config", configKeys["configRedisPath"], "Redis config file name")
 	flag.StringVar(&pidFile, 				"pid", 				PidFileName, "Pid file name")
 	flag.BoolVar(&batchMode,				"batch", 				false, "Run in batch mode")
 	flag.BoolVar(&batchModeRestart,			"batch_restart",		false, "Run batch mode with restart scan")
