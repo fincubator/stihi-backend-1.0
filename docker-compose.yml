@@ -54,6 +54,7 @@ services:
       - -config=/configs/stihi_backend_config.yaml
 
   blockchain-loader-cyberway:
+    network_mode: host
     image: stihi-base:latest
     restart: always
     tmpfs:
@@ -71,6 +72,7 @@ services:
       - -config=/configs/stihi_backend_config.yaml
 
   scan_blockchain_cyberway:
+    network_mode: host
     image: stihi-base:latest
     restart: always
     tmpfs:
