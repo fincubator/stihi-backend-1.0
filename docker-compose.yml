@@ -37,7 +37,6 @@ services:
     image: stihi-base:latest
     ports:
       - 9001:9001
-      - 9095:9095
     volumes:
       - ./configs:/configs
     tmpfs:
