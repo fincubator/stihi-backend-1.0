@@ -12,10 +12,10 @@ func GetConfigs() map[string]string {
 	}
 
 	keys := map[string]string{}
-	configFilePath, _   := os.LookupEnv("CONFIG_FILE_PATH")
-	configDbPath, _ 	:= os.LookupEnv("CONFIG_DB_PATH")
-	configMongoPath, _  := os.LookupEnv("CONFIG_MONGO_DB_PATH")
-	configRedisPath, _  := os.LookupEnv("CONFIG_REDIS_PATH")
+	configFilePath, _   := os.LookupEnv("CONFIG")
+	configDbPath, _ 	:= os.LookupEnv("DB_CONFIG")
+	configMongoPath, _  := os.LookupEnv("MONGO_DB_CONFIG")
+	configRedisPath, _  := os.LookupEnv("REDIS_CONFIG")
 
 	keys["configFilePath"] = configFilePath
 	keys["configDbPath"] = configDbPath
