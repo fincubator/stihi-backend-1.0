@@ -9,6 +9,7 @@ import (
 	"gitlab.com/stihi/stihi-backend/app/jwt"
 	"gitlab.com/stihi/stihi-backend/app/random"
 	"gitlab.com/stihi/stihi-backend/cache_level1"
+	"gitlab.com/stihi/stihi-backend/cyber"
 	"net/http"
 	// Использовать эту строку для включения вывода отладочной информации по пути /debug/pprof/goroutine?debug=1
 	// _ "net/http/pprof"
@@ -74,8 +75,10 @@ func main() {
 	}
 
 	app.AppStart(&settings)
+	app.Info.Printf("Backend loaded config: %+v", settings.Config)
 	defer os.Remove(pidFile)
 
+	cyber.Init(&Config.Cyberway)
 	app.Info.Printf("Start daemon with pid: %d", os.Getpid())
 
 	level1, err := cache_level1.New(redisConfigFileName, dbConfigFileName, mongoConfigFileName)
